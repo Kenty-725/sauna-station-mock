@@ -22,7 +22,7 @@ const BookingModal = ({ date, timeSlot, onClose, onConfirm }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-2xl p-8 w-full max-w-md transform transition-all duration-300 scale-95 opacity-0 animate-scaleIn">
+      <div className="bg-white rounded-xl shadow-2xl p-8 w-full max-w-md transform transition-all duration-300 scale-95 animate-scaleIn">
         <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           ご予約内容の確認
         </h3>
