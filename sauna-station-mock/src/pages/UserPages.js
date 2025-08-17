@@ -97,7 +97,7 @@ export const UserTopPage = ({
           予約から施設管理まで、サウナ運営に必要なすべてがここに。
         </p>
         <button
-          onClick={() => navigateTo("managerLogin")}
+          onClick={() => navigateTo("onboarding")}
           className="bg-orange-700 hover:bg-orange-800 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-transform duration-200 hover:scale-105"
         >
           施設運営者の方はこちら

@@ -21,6 +21,7 @@ import {
   AdminAccountManagePage,
 } from "./pages/AdminPages";
 import AuthApp from "./auth/AuthApp";
+import OnboardingPage from "./pages/OnboardingPage";
 
 // メインアプリケーションコンポーネント
 const App = () => {
@@ -28,7 +29,6 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState("userTop");
   // 認証状態を管理するステート
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userType, setUserType] = useState("general");
   const [userData, setUserData] = useState(null);
 
   // ページ遷移関数
@@ -40,7 +40,6 @@ const App = () => {
   // 認証成功時のハンドラ
   const handleAuthSuccess = (authData) => {
     setIsAuthenticated(true);
-    setUserType(authData.userType);
     setUserData(authData);
 
     // ユーザータイプに応じて適切なページに遷移
@@ -56,7 +55,6 @@ const App = () => {
   // ログアウト処理
   const handleLogout = () => {
     setIsAuthenticated(false);
-    setUserType("general");
     setUserData(null);
     navigateTo("userTop");
   };
@@ -103,6 +101,8 @@ const App = () => {
         );
       case "userLogin":
         return <AuthApp onAuthSuccess={handleAuthSuccess} userType="general" />;
+      case "onboarding":
+        return <OnboardingPage navigateTo={navigateTo} />;
 
       // 施設担当者向けページ
       case "managerLogin":
