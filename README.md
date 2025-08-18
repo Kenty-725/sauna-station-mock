@@ -83,6 +83,12 @@ src/
 ### インストール
 
 ```bash
+# コードを手元に持ってくる
+git clone https://github.com/Kenty-725/sauna-station-mock.git
+
+# package.jsonがある階層に移動
+cd ./sauna-station-mock/sauna-station-mock
+
 # 依存関係のインストール
 npm install
 
