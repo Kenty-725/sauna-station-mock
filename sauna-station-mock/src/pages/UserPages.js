@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import BookingModal from "../components/BookingModal";
+import FacilityDetailTabs from "../components/FacilityDetailTabs";
 
 // 1. 一般ユーザー向け トップページ
 export const UserTopPage = ({
@@ -517,7 +518,7 @@ export const UserFacilityDetailPage = ({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-3">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
                 施設概要
               </h3>
@@ -527,122 +528,186 @@ export const UserFacilityDetailPage = ({
                 広々とした外気浴スペースで、心ゆくまで"ととのう"体験をお楽しみください。
                 男女別で、アメニティも充実しています。
               </p>
+            </div>
+          </div>
 
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                設備・サービス
-              </h3>
-              <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-                <li>フィンランド式サウナ</li>
-                <li>オートロウリュ</li>
-                <li>水風呂（地下水使用）</li>
-                <li>外気浴スペース</li>
-                <li>休憩スペース</li>
-                <li>シャワーブース</li>
-                <li>タオル、シャンプー、ボディソープ完備</li>
-                <li>Wi-Fi完備</li>
-              </ul>
+          {/* 施設詳細情報タブ */}
+          <div className="mt-8">
+            <FacilityDetailTabs />
+          </div>
 
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+          {/* 営業時間・アクセス・マップ */}
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* 営業時間 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <div className="w-3 h-3 rounded-full bg-orange-600 mr-3"></div>
                 営業時間
               </h3>
-              <p className="text-gray-700 mb-6">
-                月〜金: 10:00 - 23:00 (最終受付 22:00)
-                <br />
-                土日祝: 09:00 - 24:00 (最終受付 23:00)
-              </p>
-
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                アクセス
-              </h3>
-              <p className="text-gray-700 mb-6">
-                JR山手線 渋谷駅 ハチ公口より徒歩10分
-                <br />
-                東京メトロ銀座線 渋谷駅より徒歩8分
-              </p>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="font-semibold text-gray-700">月〜金</span>
+                  <span className="text-gray-600">10:00 - 23:00</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="font-semibold text-gray-700">土日祝</span>
+                  <span className="text-gray-600">09:00 - 24:00</span>
+                </div>
+                <div className="mt-4 p-3 bg-orange-50 rounded-lg">
+                  <p className="text-sm text-orange-800 font-medium">
+                    最終受付: 営業終了1時間前
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-orange-50 p-6 rounded-xl shadow-inner border border-orange-100 col-span-full">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-                ご予約
+            {/* アクセス情報 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <div className="w-3 h-3 rounded-full bg-orange-600 mr-3"></div>
+                アクセス
               </h3>
-              <div className="mb-6">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
-                  日付と予約枠を選択
-                </label>
-                <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-300">
-                  <div className="flex justify-between items-center mb-4">
-                    <button className="text-gray-600 hover:text-gray-900">
-                      &lt; 前の週
-                    </button>
-                    <span className="font-bold text-lg text-gray-800">
-                      2025年7月20日 - 7月26日
-                    </span>
-                    <button className="text-gray-600 hover:text-gray-900">
-                      次の週 &gt;
-                    </button>
+              <div className="space-y-3">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 rounded-full bg-blue-600 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <p className="font-semibold text-gray-700">JR山手線</p>
+                    <p className="text-gray-600">渋谷駅 ハチ公口より徒歩10分</p>
                   </div>
-                  <div className="grid grid-cols-7 gap-2 text-center text-sm">
-                    {currentWeekDays.map((dayData, index) => (
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 rounded-full bg-red-600 mt-2 flex-shrink-0"></div>
+                  <div>
+                    <p className="font-semibold text-gray-700">
+                      東京メトロ銀座線
+                    </p>
+                    <p className="text-gray-600">渋谷駅より徒歩8分</p>
+                  </div>
+                </div>
+                <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+                  <p className="text-sm text-blue-800 font-medium">
+                    渋谷駅から徒歩圏内でアクセス抜群！
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Googleマップ埋め込み */}
+          <div className="mt-8 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <div className="w-3 h-3 rounded-full bg-orange-600 mr-3"></div>
+              地図・アクセス
+            </h3>
+            <div className="bg-gray-100 rounded-lg p-8 text-center">
+              <div className="text-gray-500 mb-4">
+                <svg
+                  className="w-16 h-16 mx-auto mb-2"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                <p className="text-lg font-medium">
+                  Googleマップがここに表示されます
+                </p>
+                <p className="text-sm">東京都渋谷区の位置情報</p>
+              </div>
+              <div className="text-xs text-gray-400">
+                {/* 実際のGoogleマップ埋め込み時は以下のようなコードを使用 */}
+                {/* <iframe 
+                  src="https://www.google.com/maps/embed?pb=..."
+                  width="100%" 
+                  height="400" 
+                  style={{border:0}} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade">
+                </iframe> */}
+              </div>
+            </div>
+          </div>
+
+          {/* 予約フォーム（下部） */}
+          <div className="mt-8 bg-orange-50 p-6 rounded-xl shadow-inner border border-orange-100">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+              ご予約
+            </h3>
+            <div className="mb-6">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                日付と予約枠を選択
+              </label>
+              <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-300">
+                <div className="flex justify-between items-center mb-4">
+                  <button className="text-gray-600 hover:text-gray-900">
+                    &lt; 前の週
+                  </button>
+                  <span className="font-bold text-lg text-gray-800">
+                    2025年7月20日 - 7月26日
+                  </span>
+                  <button className="text-gray-600 hover:text-gray-900">
+                    次の週 &gt;
+                  </button>
+                </div>
+                <div className="grid grid-cols-7 gap-2 text-center text-sm">
+                  {currentWeekDays.map((dayData, index) => (
+                    <div
+                      key={index}
+                      className="flex flex-col border border-gray-200 rounded-lg p-2 min-h-[150px] overflow-hidden"
+                    >
                       <div
-                        key={index}
-                        className="flex flex-col border border-gray-200 rounded-lg p-2 min-h-[150px] overflow-hidden"
+                        className={`font-semibold text-lg mb-2 ${
+                          dayData.date.getDay() === 0
+                            ? "text-red-600"
+                            : dayData.date.getDay() === 6
+                            ? "text-blue-600"
+                            : "text-gray-800"
+                        }`}
                       >
-                        <div
-                          className={`font-semibold text-lg mb-2 ${
-                            dayData.date.getDay() === 0
-                              ? "text-red-600"
-                              : dayData.date.getDay() === 6
-                              ? "text-blue-600"
-                              : "text-gray-800"
-                          }`}
-                        >
-                          {dayData.date.getDate()} ({dayData.dayOfWeek})
-                        </div>
-                        <div className="flex-grow space-y-1 overflow-y-auto custom-scrollbar">
-                          {dayData.slots.length > 0 ? (
-                            dayData.slots.map((slot, slotIndex) => (
-                              <button
-                                key={slotIndex}
-                                onClick={() =>
-                                  handleTimeSlotClick(dayData, slot)
-                                }
-                                className={`w-full text-left p-1 rounded-md transition-colors duration-150 text-xs
-                                  ${
-                                    selectedTimeSlot?.time === slot.time &&
-                                    selectedTimeSlot?.plan === slot.plan &&
-                                    selectedDate === dayData.dateString
-                                      ? "bg-orange-300"
-                                      : "bg-gray-50 hover:bg-orange-100"
-                                  }
-                                  border border-gray-200
-                                  ${
-                                    slot.congestion === "満員"
-                                      ? "opacity-50 cursor-not-allowed"
-                                      : ""
-                                  }
-                                `}
-                                disabled={slot.congestion === "満員"}
-                              >
-                                <p className="font-medium">{slot.time}</p>
-                                <p className="text-gray-600">{slot.plan}</p>
-                                <p
-                                  className={`${getCongestionStyle(
-                                    slot.congestion
-                                  )}`}
-                                >
-                                  {slot.congestion}
-                                </p>
-                              </button>
-                            ))
-                          ) : (
-                            <p className="text-gray-400 text-xs mt-4">
-                              予約枠なし
-                            </p>
-                          )}
-                        </div>
+                        {dayData.date.getDate()} ({dayData.dayOfWeek})
                       </div>
-                    ))}
-                  </div>
+                      <div className="flex-grow space-y-1 overflow-y-auto custom-scrollbar">
+                        {dayData.slots.length > 0 ? (
+                          dayData.slots.map((slot, slotIndex) => (
+                            <button
+                              key={slotIndex}
+                              onClick={() => handleTimeSlotClick(dayData, slot)}
+                              className={`w-full text-left p-1 rounded-md transition-colors duration-150 text-xs
+                                ${
+                                  selectedTimeSlot?.time === slot.time &&
+                                  selectedTimeSlot?.plan === slot.plan &&
+                                  selectedDate === dayData.dateString
+                                    ? "bg-orange-300"
+                                    : "bg-gray-50 hover:bg-orange-100"
+                                }
+                                border border-gray-200
+                                ${
+                                  slot.congestion === "満員"
+                                    ? "opacity-50 cursor-not-allowed"
+                                    : ""
+                                }
+                              `}
+                              disabled={slot.congestion === "満員"}
+                            >
+                              <p className="font-medium">{slot.time}</p>
+                              <p className="text-gray-600">{slot.plan}</p>
+                              <p
+                                className={`${getCongestionStyle(
+                                  slot.congestion
+                                )}`}
+                              >
+                                {slot.congestion}
+                              </p>
+                            </button>
+                          ))
+                        ) : (
+                          <p className="text-gray-400 text-xs mt-4">
+                            予約枠なし
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
